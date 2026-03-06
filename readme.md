@@ -6,20 +6,20 @@ O **Amora** é um sistema inteligente de lembretes recorrentes ("Remember everyt
 
 ## ✨ Funcionalidades
 
-* **Autenticação Completa:** Sistema de login e registro de usuários com proteção de rotas.
-* **Gestão de Lembretes:** CRUD completo para criar, visualizar, editar e excluir lembretes.
-* **Frequência Customizada:** Opções de recorrência (ex: diário) para os disparos automáticos.
-* **Processamento em Fila (Queues):** O envio de e-mails é feito de forma assíncrona, garantindo que a aplicação continue rápida enquanto os lembretes são disparados.
+* **Autenticação Completa**: Sistema de login e registro de usuários com proteção de rotas.
+* **Gestão de Lembretes**: CRUD completo para criar, visualizar, editar e excluir lembretes.
+* **Frequência Customizada**: Opções de recorrência (ex: diário) para os disparos automáticos.
+* **Processamento em Fila (Queues)**: O envio de e-mails é feito de forma assíncrona, garantindo que a aplicação continue rápida enquanto os lembretes são disparados.
 
 ---
 
 ## 🛠️ Stack Tecnológica
 
-* **Backend:** Laravel 12.
-* **Testes:** PEST Framework (PHP) - Cobertura total de autenticação e regras de negócio.
-* **Frontend:** Blade / Vue.js com interface minimalista e responsiva.
-* **Banco de Dados:** MySQL / SQLite.
-* **Background Jobs:** Laravel Queues para processamento assíncrono.
+* **Backend**: Laravel 12.
+* **Testes**: PEST Framework (PHP) - Cobertura total de autenticação e regras de negócio.
+* **Frontend**: Blade / Vue.js com interface minimalista e responsiva.
+* **Banco de Dados**: MySQL / SQLite.
+* **Background Jobs**: Laravel Queues para processamento assíncrono.
 
 ---
 
@@ -27,9 +27,9 @@ O **Amora** é um sistema inteligente de lembretes recorrentes ("Remember everyt
 
 O projeto utiliza o **PEST** para garantir que a lógica de permissões e criação de dados esteja sempre íntegra:
 
-* **Security:** Usuários só podem interagir com seus próprios lembretes (403 Forbidden para acessos não autorizados).
-* **Validation:** Validação rigorosa de e-mails e fluxos de cadastro.
-* **Database Integrity:** Testes de persistência garantem que cada lembrete seja salvo com os parâmetros corretos.
+* **Security**: Usuários só podem interagir com seus próprios lembretes (403 Forbidden para acessos não autorizados).
+* **Validation**: Validação rigorosa de e-mails e fluxos de cadastro.
+* **Database Integrity**: Testes de persistência garantem que cada lembrete seja salvo com os parâmetros corretos.
 
 Para rodar os testes:
 php artisan test
@@ -40,7 +40,7 @@ php artisan test
 
 Para subir o ambiente de desenvolvimento, siga os passos abaixo:
 
-1. Build dos Assets:
+1. Setup Inicial (Instalação e Migrações):
 npm run build
 
 2. Interface (Frontend):
