@@ -19,7 +19,7 @@ O **Amora** é um sistema inteligente de lembretes recorrentes ("Remember everyt
 1. **Clone o repositório:**
 
     ```bash
-    git clone [https://github.com/gustavocoimbradev/amora.git](https://github.com/gustavocoimbradev/amora.git)
+    git clone https://github.com/gustavocoimbradev/amora.git
     cd amora
     ```
 
