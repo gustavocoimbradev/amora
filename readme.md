@@ -1,6 +1,6 @@
 # 🐾 Amora
 
-**Amora** é um sistema inteligente de lembretes recorrentes. Ele permite que usuários criem notificações personalizadas com frequências específicas, garantindo que compromissos e tarefas nunca sejam esquecidos através de notificações por e-mail processadas em segundo plano.
+O **Amora** é um sistema inteligente de lembretes recorrentes ("Remember everything"). Ele permite que usuários criem notificações personalizadas com frequências específicas, garantindo que compromissos e tarefas nunca sejam esquecidos através de notificações por e-mail processadas em segundo plano.
 
 ---
 
@@ -15,10 +15,10 @@
 
 ## 🛠️ Stack Tecnológica
 
-* **Backend:** Laravel 12
+* **Backend:** Laravel 12.
 * **Testes:** PEST Framework (PHP) - Cobertura total de autenticação e regras de negócio.
 * **Frontend:** Blade / Vue.js com interface minimalista e responsiva.
-* **Banco de Dados:** MySQL / SQLite
+* **Banco de Dados:** MySQL / SQLite.
 * **Background Jobs:** Laravel Queues para processamento assíncrono.
 
 ---
@@ -32,5 +32,28 @@ O projeto utiliza o **PEST** para garantir que a lógica de permissões e criaç
 * **Database Integrity:** Testes de persistência garantem que cada lembrete seja salvo com os parâmetros corretos.
 
 Para rodar os testes:
-```bash
 php artisan test
+
+---
+
+## 🚀 Como Rodar Localmente
+
+Para subir o ambiente de desenvolvimento, siga os passos abaixo:
+
+1. Build dos Assets:
+npm run build
+
+2. Interface (Frontend):
+npm run dev # Execute em um terminal
+
+3. Servidor (Backend):
+php artisan serve # Execute em outro terminal
+
+4. Processamento de Filas (Obrigatório para os e-mails):
+php artisan queue:work
+
+---
+
+## 📝 Licença
+
+Este projeto é open-source.
