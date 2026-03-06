@@ -1,0 +1,87 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme inline {
+    --font-sans: Instrument Sans, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --color-amora: #C54B8C;
+    --color-amora-dark: #b84281;
+}
+
+body {
+    @apply p-10 xl:p-20;
+}
+
+html,body,#app {
+    @apply min-h-full flex flex-col bg-amora justify-center items-center;
+}
+
+@layer components {
+    .logo {
+        @apply text-5xl text-white/80 text-center mb-4;
+        span {
+            @apply bg-white/80 text-amora px-1 ml-1;
+        }
+    }
+    .logo-small {
+        @apply text-3xl text-white/80 text-center mb-10;
+        span {
+            @apply bg-white/80 text-amora px-1 ml-1;
+        }
+    }
+    .slogan {
+        @apply text-center text-white/70 text-2xl font-thin mb-10;
+    }
+     .slogan-small {
+        @apply text-center text-white/70 text-xl font-thin;
+    }
+    .form {
+        @apply flex flex-col gap-8 bg-white/5 p-10;
+        .form-label {
+            @apply text-xl text-white/50 font-thin mb-3;
+        }
+        .form-field {
+            @apply outline-none px-3 py-4 w-full bg-white/10 text-white/50 transition-all ease-in-out duration-300 focus:bg-white/20;
+        }
+        textarea.form-field {
+            @apply resize-none h-[105px];
+        }
+        select.form-field option {
+            @apply text-black;
+        }
+        .form-error {
+            @apply text-white/90 text-sm mt-3 block; 
+        }
+    }
+    [class*="button-"] {
+        @apply px-4 py-2 w-full transition-all ease-in-out duration-300 cursor-pointer flex items-center gap-2 justify-center;
+    }
+    .button-primary {
+        @apply bg-amora text-white hover:bg-amora-dark;
+    }
+    .button-secondary {
+        @apply border border-white/10 text-white/60 hover:border-white/30 hover:text-white/80 ;
+    }
+    .card {
+        @apply bg-white/10 p-4 text-white/90 transition-all ease-in-out duration-300 hover:bg-white/20 cursor-pointer items-center flex justify-center flex flex-col;
+    }
+    .card--new {
+        @apply bg-transparent border border-white/30 border-dashed hover:bg-transparent hover:border-white/70;
+    }
+    .modal {
+        @apply fixed top-0 left-0 bg-black/70 w-full h-full transition-all ease-in-out duration-300 opacity-0 pointer-events-none;
+        .modal__box {
+            @apply fixed top-1/2 left-1/2 -translate-1/2 w-full max-w-[500px] max-h-[calc(100dvh-30px)] overflow-y-auto bg-amora transition-all ease-in-out duration-400 scale-75 opacity-0;
+        }
+        .modal__close {
+            @apply absolute top-[20px] right-[20px] cursor-pointer text-white;
+        }
+    }
+    .modal--opened {
+        @apply opacity-100 pointer-events-auto;
+        .modal__box {
+            @apply scale-100 opacity-100;
+        }
+    }
+}
