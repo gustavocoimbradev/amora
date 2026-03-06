@@ -1,6 +1,6 @@
 # 🐾 Amora
 
-**Amora** é um sistema inteligente de lembretes recorrentes ("Remember everything"). Ele permite que usuários criem notificações personalizadas com frequências específicas, garantindo que compromissos e tarefas nunca sejam esquecidos através de notificações por e-mail processadas em segundo plano.
+**Amora** é um sistema inteligente de lembretes recorrentes. Ele permite que usuários criem notificações personalizadas com frequências específicas, garantindo que compromissos e tarefas nunca sejam esquecidos através de notificações por e-mail processadas em segundo plano.
 
 ---
 
