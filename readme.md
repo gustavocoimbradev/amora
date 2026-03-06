@@ -22,23 +22,13 @@ S
 2. **Como rodar localmente:**
 
     ```bash
-    # Setup inicial (Instalação, Banco SQLite, Migrations e Seeds)
-    npm run build
+    # Setup inicial
+    composer run setup
     ```
 
     ```bash
-    # Frontend em tempo real
-    npm run dev
-    ```
-
-    ```bash
-    # Servidor Backend
-    php artisan serve
-    ```
-
-    ```bash
-    # Processamento de Filas (Obrigatório para envio de e-mails)
-    php artisan queue:work
+    # Rodar servdor
+    composer run dev
     ```
 
 3. **Acesse o sistema:**
