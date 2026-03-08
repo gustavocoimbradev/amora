@@ -19,8 +19,25 @@ class Reminder extends Model
         ];
     }
 
+    // Relationships
+
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    // Scopes
+
+    public function scopeLatestFirst($query, $auth = false) {
+        if ($auth) {
+            return $query->orderBy('id', 'desc')->where('user_id', auth()->id());
+        }
+        return $query->orderBy('id', 'desc');
+    }
+
+    public function scopePending($query) {
+        return $query->with('user')
+            ->where('next_run_at', '<=', now())
+            ->orderBy('id', 'desc');
     }
 
 }

@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Reminders\CreateReminderAction;
+use App\Actions\Reminders\DeleteReminderAction;
+use App\Actions\Reminders\UpdateReminderAction;
 use App\Http\Requests\Reminder\{StoreRequest, UpdateRequest};
 use Illuminate\Support\Facades\Gate;
 use Inertia\{Inertia, Response as InertiaResponse};
 use App\Models\Reminder;
-use App\Services\ReminderService;
 use Illuminate\Http\RedirectResponse;
 
 class ReminderController extends Controller
 {
-
-    public function __construct(protected ReminderService $service) { }
     
     public function index(): InertiaResponse {
-        return Inertia::render('Reminders/Index', ['reminders' => $this->service->getAllRemindersForAuthenticatedUser()]);
+        return Inertia::render('Reminders/Index', ['reminders' => Reminder::latestFirst()->get()]);
     }
 
     public function create(): InertiaResponse {
@@ -32,24 +32,24 @@ class ReminderController extends Controller
         return Inertia::render('Reminders/Edit', ['reminder' => $reminder]);
     }
 
-    public function store(StoreRequest $request): RedirectResponse {
-        if ($this->service->createReminder($request->validated())) {
+    public function store(StoreRequest $request, CreateReminderAction $action): RedirectResponse {
+        if ($action($request->validated())) {
             return back()->with('success', 'Reminder created successfully!');
         } 
         return back()->withErrors('error', 'Failed to create the reminder');
     } 
 
-    public function update(UpdateRequest $request, Reminder $reminder): RedirectResponse {
+    public function update(UpdateRequest $request, Reminder $reminder, UpdateReminderAction $action): RedirectResponse {
         Gate::authorize('update', $reminder);
-        if ($this->service->updateReminder($request->validated(), $reminder)) {
+        if ($action($request->validated(), $reminder)) {
             return back()->with('success', 'Reminder updated successfully!');
         } 
         return back()->withErrors('error', 'Failed to update the reminder');
     } 
 
-    public function destroy(Reminder $reminder): RedirectResponse {
+    public function destroy(Reminder $reminder, DeleteReminderAction $action): RedirectResponse {
         Gate::authorize('delete', $reminder);
-        if ($this->service->deleteReminder($reminder)) {
+        if ($action($reminder)) {
             return back()->with('success', 'Reminder deleted successfully!');
         } 
         return back()->withErrors('error', 'Failed to delete the reminder');
