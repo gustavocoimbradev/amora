@@ -17,7 +17,7 @@ class ReminderController extends Controller
 {
     
     public function index(): InertiaResponse {
-        return Inertia::render('Reminders/Index', ['reminders' => Reminder::latestFirst()->get()]);
+        return Inertia::render('Reminders/Index', ['reminders' => Reminder::latestFirst(auth: true)->get()]);
     }
 
     public function create(): InertiaResponse {
