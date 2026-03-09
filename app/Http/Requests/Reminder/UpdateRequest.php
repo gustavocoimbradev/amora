@@ -12,18 +12,13 @@ class UpdateRequest extends FormRequest
         return true;
     }
 
-    public function prepareForValidation() {
-        $this->merge(['user_id' => auth()->id()]);
-    }
-    
     public function rules(): array
     {
         return [
             'title' => 'required|string|min:3|max:255',
             'description' => 'required|string|min:3|max:10000',
             'next_run_at' => 'required|date',
-            'frequency' => 'required|integer|min:1|max:4',
-            'user_id' => 'required|exists:users,id',
+            'frequency' => 'required|integer|min:1|max:4'
         ];
     }
 }

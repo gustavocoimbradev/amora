@@ -2,12 +2,16 @@
 
 namespace App\Actions\Auth;
 
+use App\Dto\Auth\AuthenticateUserDto;
 use Illuminate\Support\Facades\Auth;
 
 class AuthenticateUserAction {
 
-    public function __invoke(array $data): bool {
-        return Auth::attempt($data);
+    public function __invoke(AuthenticateUserDto $data): bool {
+        return Auth::attempt([
+            'email' => $data->email,
+            'password' => $data->password
+        ]);
     }
 
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Auth\AuthenticateUserAction;
+use App\Dto\Auth\AuthenticateUserDto;
 use App\Http\Requests\Auth\StoreRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -15,12 +16,14 @@ class AuthController extends Controller
         return Inertia::render('Auth/Create');
     }
     public function store(StoreRequest $request, AuthenticateUserAction $action): RedirectResponse {
-        if ($action($request->validated())) {
+        $dto = AuthenticateUserDto::fromRequest($request);
+        if ($action($dto)) {
             $request->session()->regenerate();
             return to_route('reminders.index');
         }
         return back()->withErrors('credentials', 'The credentials are invalid');
     }
+
     public function destroy(Request $request): RedirectResponse {
         if (Auth::logout()) {
             $request->session()->invalidate();

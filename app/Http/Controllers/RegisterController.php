@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Register\CreateUserAction;
+use App\Dto\Register\CreateUserDto;
 use App\Http\Requests\Register\StoreRequest;
 use Illuminate\Http\RedirectResponse;
 use Inertia\{Inertia, Response as InertiaResponse};
@@ -13,7 +14,8 @@ class RegisterController extends Controller
         return Inertia::render('Register/Create');
     }
     public function store(StoreRequest $request, CreateUserAction $action): RedirectResponse {
-        $user = $action($request->validated());
+        $dto = CreateUserDto::fromRequest($request);
+        $user = $action($dto);
         auth()->login($user);
         return to_route('reminders.index');
     }
