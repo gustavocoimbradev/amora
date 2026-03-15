@@ -5,10 +5,8 @@
 ---
 
 ### 📋 Pré-requisitos
-S
-- **PHP 8.2+**
-- **Composer**
-- **Node.js & NPM**
+
+- **Docker**
 
 ### 🛠️ Passo a passo
 
@@ -19,34 +17,28 @@ S
     cd amora
     ```
 
-2. **Como rodar localmente:**
+2. **Como rodar:**
 
     ```bash
-    # Setup inicial
-    composer run setup
-    ```
-
-    ```bash
-    # Rodar servdor
-    composer run dev
+    docker compose up -d
     ```
 
 3. **Acesse o sistema:**
-   Após a conclusão do script, o sistema estará disponível em:
     ```bash
     http://localhost:8000
     ```
 
 ---
 
-## 🧪 Qualidade e Testes
+## 🛠️ Tecnologias utilizadas
 
-O projeto utiliza o **PEST Framework** para garantir a integridade das regras de negócio e segurança:
+- **Backend:** [Laravel 12](https://laravel.com)
+- **Frontend:** [Vue.js 3](https://vuejs.org) / [Inertia.js](https://inertiajs.com)
+- **Estilização:** [Tailwind CSS](https://tailwindcss.com)
+- **Infraestrutura:** [Docker](https://www.docker.com) & [Docker Compose](https://docs.docker.com/compose/)
 
-* **Security**: Validação de que usuários só acessam seus próprios lembretes.
-* **Auth**: Testes completos de login e registro.
-* **CRUD**: Garantia de persistência correta no banco de dados.
+---
 
-Para rodar a suíte de testes:
-```bash
-php artisan test
+## 📝 Licença
+
+Este projeto é um software de código aberto (open-source) licenciado sob a [MIT license](https://opensource.org/licenses/MIT).
