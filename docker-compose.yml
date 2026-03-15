@@ -1,0 +1,36 @@
+services:
+  amora:
+    build:
+      context: .
+      dockerfile: dockerfiles/php/Dockerfile
+    image: amora
+    container_name: amora-app
+    user: "root"
+    tty: true
+    volumes:
+      - .:/var/www
+    networks:
+      - laravel_app
+  nginx:
+    image: nginx:alpine
+    container_name: amora-nginx
+    ports:
+      - "8003:80"
+    volumes:
+      - .:/var/www
+      - ./dockerfiles/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - laravel_app
+  mysql:
+    image: mysql:5.7
+    container_name: amora-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-password}
+      MYSQL_DATABASE: ${DB_DATABASE:-laravel}
+    networks:
+      - laravel_app
+    volumes:
+      - ./dockerfiles/mysql/data:/var/lib/mysql
+networks:
+  laravel_app:
+    driver: bridge
